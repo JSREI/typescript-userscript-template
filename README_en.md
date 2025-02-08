@@ -55,7 +55,7 @@ Then, modify the `package.json` file, replacing the relevant fields with your ow
 {
   "name": "userscript-foo",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "index.ts",
   "repository": "https://github.com/JSREI/userscript-template.git",
   "scripts": {
       // ... 
@@ -114,7 +114,7 @@ Then you can happily start coding. While writing code, you can use the `npm` com
 npm add xxx
 ```
 
-However, it is important to note that these dependencies will ultimately be packed into `./dist/index.js`, and this file should not be too large, so try to avoid referencing too many third-party libraries.
+However, it is important to note that these dependencies will ultimately be packed into `./dist/index.ts`, and this file should not be too large, so try to avoid referencing too many third-party libraries.
 
 At the same time, you can now organize your code in a modular way under the `src` directory, instead of struggling with a single `JavaScript` file that is thousands of lines long as before (single-file development is simply a form of mental torture...):
 
@@ -126,17 +126,17 @@ When you need to test, execute:
 npm run watch
 ```
 
-Then copy the file header from `./dist/index.js` to your Tampermonkey extension:
+Then copy the file header from `./dist/index.ts` to your Tampermonkey extension:
 
 ![image-20230817000716664](README.assets/image-20230817000716664.png)
 
-And at the end, add a line to import the compiled file, noting that the `file://` followed by the address points to the absolute path of your compiled `./dist/index.js`:
+And at the end, add a line to import the compiled file, noting that the `file://` followed by the address points to the absolute path of your compiled `./dist/index.ts`:
 
 ```js
-// @require    file://D:/workspace/userscript-template/dist/index.js
+// @require    file://D:/workspace/userscript-template/dist/index.ts
 ```
 
-For example, here is an actual example of a Tampermonkey script used during development. The Tampermonkey script does not contain actual code but uses `require` to point to our `build` files. This way, when the code is modified and `webpack` automatically hot compiles, the `./dist/index.js` referenced in the browser is also the latest:
+For example, here is an actual example of a Tampermonkey script used during development. The Tampermonkey script does not contain actual code but uses `require` to point to our `build` files. This way, when the code is modified and `webpack` automatically hot compiles, the `./dist/index.ts` referenced in the browser is also the latest:
 
 ```js
 // ==UserScript==
@@ -148,12 +148,12 @@ For example, here is an actual example of a Tampermonkey script used during deve
 // @author       CC11001100 <CC11001100@qq.com>
 // @match        *://*/*
 // @run-at       document-start
-// @require    file://D:/workspace/userscript-template/dist/index.js
+// @require    file://D:/workspace/userscript-template/dist/index.ts
 // ==/UserScript==
 (() => {})();
 ```
 
-Please note that when you debug using the method `// @require    file://D:/workspace/userscript-template/dist/index.js`, your Tampermonkey extension should be configured to allow access to file URLs (by default, it is not allowed). Right-click on the browser plugin icon and select "Manage Extensions":
+Please note that when you debug using the method `// @require    file://D:/workspace/userscript-template/dist/index.ts`, your Tampermonkey extension should be configured to allow access to file URLs (by default, it is not allowed). Right-click on the browser plugin icon and select "Manage Extensions":
 
 ![image-20240723005213833](./README.assets/image-20240723005213833.png)
 
@@ -169,7 +169,7 @@ When you need to publish:
 npm run build
 ```
 
-Then simply take the `./dist/index.js` file and publish it.
+Then simply take the `./dist/index.ts` file and publish it.
 
 
 

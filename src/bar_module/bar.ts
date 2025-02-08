@@ -1,8 +1,7 @@
 /**
  * 这是bar函数
  */
-function bar() {
+export default function bar() {
     console.log("bar");
 }
 
-module.exports = bar;

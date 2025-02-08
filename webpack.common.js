@@ -5,12 +5,15 @@ const fs = require("fs");
 
 module.exports = {
     entry: {
-        index: "./src/index.js"
+        index: "./src/index.ts"  // 修改入口文件为 .ts
     },
     output: {
         // filename: "[name]-[hash].js",
         filename: "[name].js",
         path: path.resolve(__dirname, "dist"),
+    },
+    resolve: {
+        extensions: [".ts", ".js"]  // 添加 .ts 扩展名
     },
     optimization: {
     },
@@ -38,6 +41,11 @@ module.exports = {
     ],
     module: {
         rules: [
+            {
+                test: /\.ts$/,  // 添加 TypeScript 文件的处理规则
+                use: 'ts-loader',
+                exclude: /node_modules/
+            },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']

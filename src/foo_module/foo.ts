@@ -1,8 +1,7 @@
 /**
  * 这是foo函数
  */
-function foo() {
+export default function foo() {
     console.log("foo");
 }
 
-module.exports = foo;

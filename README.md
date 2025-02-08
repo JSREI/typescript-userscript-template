@@ -40,7 +40,7 @@ npm install
 {
   "name": "userscript-foo",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "index.ts",
   "repository": "https://github.com/JSREI/userscript-template.git",
   "scripts": {
       // ... 
@@ -99,7 +99,7 @@ npm install
 npm add xxx
 ```
 
-但是需要注意，这些依赖最终会被打包进`./dist/index.js`，而这个文件是不适合太大的，所以尽可能不要引用太多的第三方库。
+但是需要注意，这些依赖最终会被打包进`./dist/index.ts`，而这个文件是不适合太大的，所以尽可能不要引用太多的第三方库。
 
 同时你现在可以在`src`目录下以模块化的方式组织你的代码，而不必像之前那样来回上下拉扯一个几千行的`JavaScript`文件（单文件开发那简直是一种对脑力的摧残...）：
 
@@ -111,17 +111,17 @@ npm add xxx
 npm run watch
 ```
 
-然后把`./dist/index.js`中的文件头复制到你的油猴中：
+然后把`./dist/index.ts`中的文件头复制到你的油猴中：
 
 ![image-20230817000716664](README.assets/image-20230817000716664.png)
 
-并在最后添加一行引入编译后的文件，注意这个`file://`后面的地址是指向你的编译后的`./dist/index.js`的绝对路径：
+并在最后添加一行引入编译后的文件，注意这个`file://`后面的地址是指向你的编译后的`./dist/index.ts`的绝对路径：
 
 ```js
-// @require    file://D:/workspace/userscript-template/dist/index.js
+// @require    file://D:/workspace/userscript-template/dist/index.ts
 ```
 
-比如下面是一个开发时使用的油猴脚本的实际例子，油猴中没有实际代码，而是使用`require`指向我们`build`后的文件，这样当修改完代码`webpack`自动热编译的时候浏览器中引用的`./dist/index.js`也是最新的：
+比如下面是一个开发时使用的油猴脚本的实际例子，油猴中没有实际代码，而是使用`require`指向我们`build`后的文件，这样当修改完代码`webpack`自动热编译的时候浏览器中引用的`./dist/index.ts`也是最新的：
 
 ```js
 // ==UserScript==
@@ -133,12 +133,12 @@ npm run watch
 // @author       CC11001100 <CC11001100@qq.com>
 // @match        *://*/*
 // @run-at       document-start
-// @require    file://D:/workspace/userscript-template/dist/index.js
+// @require    file://D:/workspace/userscript-template/dist/index.ts
 // ==/UserScript==
 (() => {})();
 ```
 
-注意，当你使用`// @require    file://D:/workspace/userscript-template/dist/index.js`这种方式来调试的时候，你的油猴插件应该配置了允许访问文件网址（默认情况下是不允许的），在浏览器插件图标上右键，选择”管理扩展程序“：
+注意，当你使用`// @require    file://D:/workspace/userscript-template/dist/index.ts`这种方式来调试的时候，你的油猴插件应该配置了允许访问文件网址（默认情况下是不允许的），在浏览器插件图标上右键，选择”管理扩展程序“：
 
 ![image-20240723005213833](./README.assets/image-20240723005213833.png)
 
@@ -154,7 +154,7 @@ npm run watch
 npm run build
 ```
 
-然后把`./dist/index.js`文件拿去发布即可。
+然后把`./dist/index.ts`文件拿去发布即可。
 
 
 
