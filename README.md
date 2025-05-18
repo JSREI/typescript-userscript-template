@@ -14,7 +14,7 @@
 
 # 三、快速开始
 
-在当前仓库（https://github.com/JSREI/userscript-template）选择“`Use this template`” --> “`Create a new repository`”，从这个模板仓库创建一个新的仓库： 
+在当前仓库（https://github.com/JSREI/userscript-template）选择"`Use this template`" --> "`Create a new repository`"，从这个模板仓库创建一个新的仓库： 
 
 ![image-20230816233501101](README.assets/image-20230816233501101.png)
 
@@ -138,11 +138,11 @@ npm run watch
 (() => {})();
 ```
 
-注意，当你使用`// @require    file://D:/workspace/userscript-template/dist/index.ts`这种方式来调试的时候，你的油猴插件应该配置了允许访问文件网址（默认情况下是不允许的），在浏览器插件图标上右键，选择”管理扩展程序“：
+注意，当你使用`// @require    file://D:/workspace/userscript-template/dist/index.ts`这种方式来调试的时候，你的油猴插件应该配置了允许访问文件网址（默认情况下是不允许的），在浏览器插件图标上右键，选择"管理扩展程序"：
 
 ![image-20240723005213833](./README.assets/image-20240723005213833.png)
 
-确保这个”允许访问文件网址“开关是打开的，否则的话`@require`将无法引用本地文件：
+确保这个"允许访问文件网址"开关是打开的，否则的话`@require`将无法引用本地文件：
 
 ![image-20240723005321887](./README.assets/image-20240723005321887.png)
 
@@ -155,6 +155,40 @@ npm run build
 ```
 
 然后把`./dist/index.ts`文件拿去发布即可。
+
+# 四、TypeScript支持
+
+本项目已经集成了TypeScript支持，包括油猴API的类型定义。这使得在开发过程中可以获得完整的类型检查和智能提示。
+
+## 油猴API类型定义
+
+项目使用`@types/tampermonkey`包提供油猴API的类型定义，并在`src/types`目录下提供了额外的类型扩展。
+
+### 如何使用
+
+1. 直接在代码中使用油猴API，TypeScript将自动识别这些API的类型：
+
+```typescript
+// 存储数据
+GM_setValue('key', 'value');
+
+// 读取数据
+const value = GM_getValue('key', 'default');
+```
+
+2. 查看`src/gm_api_example/gm_api_usage.ts`文件，了解更多油猴API的使用示例。
+
+3. 详细的使用说明请参考`src/types/README.md`文件。
+
+### 注意事项
+
+确保在`userscript-headers.js`文件中添加了所需的`@grant`声明，否则相应的API将不可用。例如：
+
+```js
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_xmlhttpRequest
+```
 
 
 
