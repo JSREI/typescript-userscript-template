@@ -46,7 +46,17 @@ module.exports = {
                     banner = banner.replaceAll("${document}", webpackPackageJson["document"] || "");
                     banner = banner.replaceAll("${author}", webpackPackageJson["author"] || "");
                     banner = banner.replaceAll("${repository}", webpackPackageJson["repository"] || "");
-                    userscriptHeaders += "\n" + banner.split("\n").join("\n//    ") + "\n";
+                    
+                    // 修复：确保在油猴头部注释和banner之间有足够的空行
+                    // 添加两个换行，确保脚本头注释和实际代码之间有明确的分隔
+                    // 修复：确保每一行都添加注释前缀，包括第一行
+                    userscriptHeaders += "\n\n";
+                    
+                    // 处理每一行，确保每一行都有注释前缀
+                    const bannerLines = banner.split("\n");
+                    const commentedBanner = bannerLines.map(line => "//    " + line).join("\n");
+                    
+                    userscriptHeaders += commentedBanner + "\n";
                 }
 
                 return userscriptHeaders;
