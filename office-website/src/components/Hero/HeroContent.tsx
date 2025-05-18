@@ -1,13 +1,92 @@
 import React from 'react';
-import { 
-  ContentLeft, 
-  Title, 
-  Subtitle, 
-  ButtonGroup, 
-  PrimaryButton, 
-  SecondaryButton 
-} from '../../styles/components/Hero.styles';
+import styled from 'styled-components';
 import CodeExample from './CodeExample';
+
+const ContentLeft = styled.div`
+  flex: 1;
+  margin-right: 3rem;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    to right,
+    ${({ theme }) => theme.colors.primary} 0%,
+    ${({ theme }) => theme.colors.secondary} 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 2.5rem;
+  }
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.25rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+  color: ${({ theme }) => theme.colors.darkGray};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin: 0 auto 2rem;
+  }
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    justify-content: center;
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+`;
+
+const PrimaryButton = styled.a`
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: white;
+  font-weight: 600;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  transition: all 0.2s;
+  
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primaryDark};
+    transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  }
+`;
+
+const SecondaryButton = styled.a`
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 600;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  transition: all 0.2s;
+  
+  &:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+    transform: translateY(-2px);
+  }
+`;
 
 const HeroContent: React.FC = () => {
   return (

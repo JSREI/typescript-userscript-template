@@ -1,11 +1,53 @@
 import React from 'react';
-import { 
-  CodeBox, 
-  CodeHeader, 
-  CodeDots 
-} from '../../styles/components/CodeExample.styles';
-import { VisualContainer } from '../../styles/components/Hero.styles';
+import styled from 'styled-components';
 import CustomCodeBlock from '../CustomCodeBlock';
+
+const VisualContainer = styled.div`
+  flex: 1;
+  max-width: 600px;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 100%;
+  }
+`;
+
+const CodeBox = styled.div`
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  overflow: hidden;
+  box-shadow: ${({ theme }) => theme.boxShadow.large};
+  font-family: 'Fira Code', monospace;
+`;
+
+const CodeHeader = styled.div`
+  background-color: #1e1e1e;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+`;
+
+const CodeDots = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  
+  span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    
+    &:nth-child(1) {
+      background-color: #ff5f56;
+    }
+    
+    &:nth-child(2) {
+      background-color: #ffbd2e;
+    }
+    
+    &:nth-child(3) {
+      background-color: #27c93f;
+    }
+  }
+`;
 
 // 示例代码
 const codeExample = `// ==UserScript==
