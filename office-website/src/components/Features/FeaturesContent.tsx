@@ -1,10 +1,5 @@
 import React from 'react';
-import { 
-  SectionHeading, 
-  Title, 
-  Subtitle, 
-  FeaturesGrid 
-} from '../../styles/components/Features.styles';
+import styled from 'styled-components';
 import FeatureCard from './FeatureCard';
 import { 
   ModuleIcon, 
@@ -14,6 +9,43 @@ import {
   SimpleIcon, 
   ApiIcon 
 } from './FeatureIcons';
+
+// 将样式移入组件文件中
+const SectionHeading = styled.div`
+  text-align: center;
+  margin-bottom: 4rem;
+`;
+
+const Title = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 2rem;
+  }
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.125rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: ${({ theme }) => theme.colors.darkGray};
+`;
+
+const FeaturesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+  }
+`;
 
 const FeaturesContent: React.FC = () => {
   return (

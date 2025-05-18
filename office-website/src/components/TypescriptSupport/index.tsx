@@ -1,13 +1,5 @@
 import React from 'react';
-import { 
-  TypescriptContainer, 
-  TypescriptContent, 
-  Title, 
-  Subtitle, 
-  ContentGrid, 
-  TextContent, 
-  FeatureList 
-} from '../../styles/components/TypescriptSupport.styles';
+import styled from 'styled-components';
 import TypescriptFeature from './TypescriptFeature';
 import TypescriptCodeExample from './TypescriptCodeExample';
 import { 
@@ -16,6 +8,60 @@ import {
   RefactoringIcon, 
   ModernSyntaxIcon 
 } from './FeatureIcons';
+
+// 将样式移入组件文件中
+const TypescriptContainer = styled.section`
+  padding: 6rem 0;
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+const TypescriptContent = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+`;
+
+const Title = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 2rem;
+  }
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.125rem;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  color: ${({ theme }) => theme.colors.darkGray};
+`;
+
+const ContentGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const TextContent = styled.div`
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    order: 2;
+  }
+`;
+
+const FeatureList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
 
 const TypescriptSupport: React.FC = () => {
   return (

@@ -1,6 +1,17 @@
 import React from 'react';
-import { CodeContainer } from '../../styles/components/TypescriptSupport.styles';
+import styled from 'styled-components';
 import CustomCodeBlock from '../CustomCodeBlock';
+
+// 将样式移入组件文件中
+const CodeContainer = styled.div`
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  overflow: hidden;
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    order: 1;
+  }
+`;
 
 const tsCode = `// 类型定义
 interface UserScriptOptions {
