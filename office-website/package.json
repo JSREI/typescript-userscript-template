@@ -1,4 +1,5 @@
 {
+  "homepage": "https://jsrei.github.io/typescript-userscript-template",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

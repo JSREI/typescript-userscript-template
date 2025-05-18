@@ -1,0 +1,37 @@
+name: 部署Office网站到GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 当推送到main分支时触发
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 设置Node.js环境
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: 'office-website/package-lock.json'
+
+      - name: 安装依赖
+        run: |
+          cd office-website
+          npm ci
+
+      - name: 构建项目
+        run: |
+          cd office-website
+          npm run build
+
+      - name: 部署到GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./office-website/build
+          cname: # 如果你有自定义域名，可以在这里设置 
