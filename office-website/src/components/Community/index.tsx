@@ -1,12 +1,39 @@
 import React from 'react';
-import { 
-  CommunityContainer, 
-  CommunityContent, 
-  CommunityTitle, 
-  QrCodesContainer 
-} from '../../styles/components/Community.styles';
+import styled from 'styled-components';
 import QrCodeCard from './QrCodeCard';
 import { qrCodes } from './QrCodeData';
+
+const CommunityContainer = styled.section`
+  padding: 5rem 0;
+  background-color: ${({ theme }) => theme.colors.backgroundAlt};
+`;
+
+const CommunityContent = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+`;
+
+const CommunityTitle = styled.h2`
+  color: ${({ theme }) => theme.colors.heading};
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+`;
+
+const QrCodesContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin: 3rem 0;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
 
 const Community: React.FC = () => {
   return (
