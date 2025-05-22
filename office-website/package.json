@@ -28,6 +28,7 @@
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
     "react-scripts": "^5.0.1",
+    "react-syntax-highlighter": "^15.6.1",
     "reactflow": "^11.11.4",
     "styled-components": "^6.1.8",
     "yet-another-react-lightbox": "^3.23.2"
