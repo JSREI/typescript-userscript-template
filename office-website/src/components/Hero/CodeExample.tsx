@@ -1,123 +1,122 @@
 import React from 'react';
 import styled from 'styled-components';
-import CustomCodeBlock from '../CustomCodeBlock';
+import VSCodeViewer from '../VSCodeViewer';
 
 const VisualContainer = styled.div`
-  flex: 1;
-  max-width: 600px;
+  position: relative;
+  padding: 40px 0;
+  perspective: 1000px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(230, 235, 245, 0.4) 0%,
+    rgba(240, 245, 250, 0.2) 100%
+  );
   
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    width: 100%;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(5px);
+    z-index: -1;
   }
 `;
 
 const CodeBox = styled.div`
-  border-radius: ${({ theme }) => theme.borderRadius.medium};
-  overflow: hidden;
-  box-shadow: ${({ theme }) => theme.boxShadow.large};
-  font-family: 'Fira Code', monospace;
-`;
-
-const CodeHeader = styled.div`
-  background-color: #1e1e1e;
-  padding: 0.75rem 1rem;
-  display: flex;
-  align-items: center;
-`;
-
-const CodeDots = styled.div`
-  display: flex;
-  gap: 0.5rem;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08),
+              0 5px 15px rgba(0, 0, 0, 0.05);
+  transform: perspective(1000px) rotateX(2deg);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
   
-  span {
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    
-    &:nth-child(1) {
-      background-color: #ff5f56;
-    }
-    
-    &:nth-child(2) {
-      background-color: #ffbd2e;
-    }
-    
-    &:nth-child(3) {
-      background-color: #27c93f;
-    }
+  &:hover {
+    transform: perspective(1000px) rotateX(0deg) translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.07);
   }
 `;
 
-// 示例代码
+// 示例TypeScript用户脚本代码
 const codeExample = `// ==UserScript==
-// @name         Typescript Userscript Template
-// @namespace    https://github.com/JSREI/typescript-userscript-template
-// @version      1.0.0
-// @description  A modern userscript template using TypeScript
-// @author       Your Name
-// @match        *://*/*
-// @run-at       document-start
-// @grant        GM_getValue
-// @grant        GM_setValue
-// @grant        GM_xmlhttpRequest
+// @name        TypeScript Userscript Template
+// @namespace   https://github.com/JSREI/typescript-userscript-template
+// @version     1.0.0
+// @description TypeScript Userscript Template with webpack
+// @author      JSREI
+// @match       *://*/*
+// @grant       GM_setValue
+// @grant       GM_getValue
 // ==/UserScript==
 
-import { storeData, retrieveData } from "./gm_api_utils";
+import { setValue, getValue } from './gm_api_utils';
 
-class MyUserScript {
-  private config = {
-    enableLogging: true,
-    theme: "dark"
-  };
-
+/**
+ * 用户脚本主类
+ */
+class UserScript {
+  private initialized: boolean = false;
+  
   constructor() {
     this.initialize();
   }
-
+  
+  /**
+   * 初始化函数
+   */
   private async initialize(): Promise<void> {
-    console.log("UserScript initialized!");
+    if (this.initialized) return;
     
-    // 存储并获取上次运行时间
-    await storeData("lastRun", new Date().toISOString());
-    const lastRun = await retrieveData<string>("lastRun", "从未运行");
-    
-    if (this.config.enableLogging) {
-      console.log(\`上次运行时间: \${lastRun}\`);
+    try {
+      // 从GM存储获取数据
+      const storedData = await getValue('userSettings');
+      console.log('Loaded settings:', storedData);
+      
+      // 设置事件监听
+      this.setupEventListeners();
+      
+      this.initialized = true;
+      console.log('TypeScript UserScript initialized!');
+    } catch (error) {
+      console.error('Initialization error:', error);
     }
-    
-    this.setupEventListeners();
   }
-
+  
+  /**
+   * 设置事件监听器
+   */
   private setupEventListeners(): void {
-    document.addEventListener("click", this.handleClick);
+    document.addEventListener('click', this.handleClick.bind(this));
+    // 可添加更多事件监听器
   }
-
-  private handleClick = (e: MouseEvent): void => {
-    if (this.config.enableLogging) {
-      console.log("Clicked:", e.target);
+  
+  /**
+   * 处理点击事件
+   */
+  private async handleClick(event: MouseEvent): Promise<void> {
+    // 示例：点击时保存数据
+    if ((event.target as HTMLElement).matches('.save-data')) {
+      const data = { timestamp: Date.now() };
+      await setValue('clickData', data);
+      console.log('Data saved on click!');
     }
-  };
+  }
 }
 
-// 启动脚本
-new MyUserScript();`;
+// 实例化并启动用户脚本
+new UserScript();
+`;
 
 const CodeExample: React.FC = () => {
   return (
     <VisualContainer>
       <CodeBox>
-        <CodeHeader>
-          <CodeDots>
-            <span></span>
-            <span></span>
-            <span></span>
-          </CodeDots>
-        </CodeHeader>
-        <CustomCodeBlock 
-          code={codeExample} 
-          language="typescript" 
-          showLineNumbers={true} 
+        <VSCodeViewer
+          fileName="userscript.ts"
+          showIntellisense={true}
         />
       </CodeBox>
     </VisualContainer>

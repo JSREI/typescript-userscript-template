@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+import Counter from 'yet-another-react-lightbox/plugins/counter';
+import 'yet-another-react-lightbox/plugins/counter.css';
+import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
+import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import QrCodeCard from './QrCodeCard';
 import { qrCodes } from './QrCodeData';
 
@@ -36,6 +43,22 @@ const QrCodesContainer = styled.div`
 `;
 
 const Community: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
+
+  // 为Lightbox准备图片数据
+  const slides = qrCodes.map(qrCode => ({
+    src: qrCode.imageUrl,
+    alt: qrCode.imageAlt,
+    title: qrCode.text
+  }));
+
+  // 处理打开Lightbox并设置初始图片
+  const openLightbox = (index: number) => {
+    setPhotoIndex(index);
+    setIsOpen(true);
+  };
+
   return (
     <CommunityContainer id="community">
       <CommunityContent>
@@ -50,9 +73,28 @@ const Community: React.FC = () => {
               text={qrCode.text}
               linkUrl={qrCode.linkUrl}
               linkText={qrCode.linkText}
+              onClick={() => openLightbox(index)}
             />
           ))}
         </QrCodesContainer>
+
+        {/* 全局图片查看器 */}
+        <Lightbox
+          open={isOpen}
+          close={() => setIsOpen(false)}
+          slides={slides}
+          index={photoIndex}
+          plugins={[Zoom, Counter, Thumbnails]}
+          zoom={{
+            maxZoomPixelRatio: 3,
+            zoomInMultiplier: 1.5,
+          }}
+          thumbnails={{
+            position: 'bottom',
+            width: 120,
+            height: 80,
+          }}
+        />
       </CommunityContent>
     </CommunityContainer>
   );

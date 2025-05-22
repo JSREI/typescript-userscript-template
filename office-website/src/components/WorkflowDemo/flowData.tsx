@@ -1,6 +1,7 @@
 import { Node, Edge, MarkerType } from 'reactflow';
 import { CustomNodeData } from './CustomNode';
 
+// 使用分层的树形结构来组织流程
 export const initialNodes: Node<CustomNodeData>[] = [
   {
     id: '1',
@@ -9,7 +10,7 @@ export const initialNodes: Node<CustomNodeData>[] = [
       label: '1. 克隆模板',
       description: '从GitHub克隆或下载Typescript Userscript Template',
     },
-    position: { x: 250, y: 0 },
+    position: { x: 400, y: 0 },
   },
   {
     id: '2',
@@ -18,7 +19,7 @@ export const initialNodes: Node<CustomNodeData>[] = [
       label: '2. 安装依赖',
       description: '运行npm install安装所需的开发依赖',
     },
-    position: { x: 250, y: 100 },
+    position: { x: 400, y: 120 },
   },
   {
     id: '3',
@@ -27,7 +28,7 @@ export const initialNodes: Node<CustomNodeData>[] = [
       label: '3. 修改配置',
       description: '编辑package.json和webpack.config.js中的配置',
     },
-    position: { x: 250, y: 200 },
+    position: { x: 400, y: 240 },
   },
   {
     id: '4',
@@ -36,7 +37,7 @@ export const initialNodes: Node<CustomNodeData>[] = [
       label: '4. 开发',
       description: '使用TypeScript编写你的用户脚本逻辑',
     },
-    position: { x: 250, y: 300 },
+    position: { x: 400, y: 360 },
   },
   {
     id: '5',
@@ -45,7 +46,7 @@ export const initialNodes: Node<CustomNodeData>[] = [
       label: '5. 调试',
       description: '运行npm run dev进行实时开发和调试',
     },
-    position: { x: 100, y: 400 },
+    position: { x: 200, y: 480 },
   },
   {
     id: '6',
@@ -54,7 +55,7 @@ export const initialNodes: Node<CustomNodeData>[] = [
       label: '6. 测试',
       description: '确保脚本在不同环境下正常运行',
     },
-    position: { x: 400, y: 400 },
+    position: { x: 600, y: 480 },
   },
   {
     id: '7',
@@ -63,7 +64,7 @@ export const initialNodes: Node<CustomNodeData>[] = [
       label: '7. 构建',
       description: '运行npm run build构建生产版本',
     },
-    position: { x: 250, y: 500 },
+    position: { x: 400, y: 600 },
   },
   {
     id: '8',
@@ -72,10 +73,11 @@ export const initialNodes: Node<CustomNodeData>[] = [
       label: '8. 发布',
       description: '将生成的脚本提交到Greasy Fork或其他平台',
     },
-    position: { x: 250, y: 600 },
+    position: { x: 400, y: 720 },
   },
 ];
 
+// 使用弯曲的连线和自定义样式
 export const initialEdges: Edge[] = [
   {
     id: 'e1-2',
@@ -84,6 +86,8 @@ export const initialEdges: Edge[] = [
     markerEnd: {
       type: MarkerType.ArrowClosed,
     },
+    style: { stroke: '#4f46e5', strokeWidth: 2 },
+    animated: true,
   },
   {
     id: 'e2-3',
@@ -92,6 +96,8 @@ export const initialEdges: Edge[] = [
     markerEnd: {
       type: MarkerType.ArrowClosed,
     },
+    style: { stroke: '#4f46e5', strokeWidth: 2 },
+    animated: true,
   },
   {
     id: 'e3-4',
@@ -100,6 +106,8 @@ export const initialEdges: Edge[] = [
     markerEnd: {
       type: MarkerType.ArrowClosed,
     },
+    style: { stroke: '#4f46e5', strokeWidth: 2 },
+    animated: true,
   },
   {
     id: 'e4-5',
@@ -108,6 +116,9 @@ export const initialEdges: Edge[] = [
     markerEnd: {
       type: MarkerType.ArrowClosed,
     },
+    type: 'smoothstep',
+    style: { stroke: '#4f46e5', strokeWidth: 2 },
+    animated: true,
   },
   {
     id: 'e4-6',
@@ -116,6 +127,9 @@ export const initialEdges: Edge[] = [
     markerEnd: {
       type: MarkerType.ArrowClosed,
     },
+    type: 'smoothstep',
+    style: { stroke: '#4f46e5', strokeWidth: 2 },
+    animated: true,
   },
   {
     id: 'e5-7',
@@ -124,6 +138,9 @@ export const initialEdges: Edge[] = [
     markerEnd: {
       type: MarkerType.ArrowClosed,
     },
+    type: 'smoothstep',
+    style: { stroke: '#4f46e5', strokeWidth: 2 },
+    animated: true,
   },
   {
     id: 'e6-7',
@@ -132,6 +149,9 @@ export const initialEdges: Edge[] = [
     markerEnd: {
       type: MarkerType.ArrowClosed,
     },
+    type: 'smoothstep',
+    style: { stroke: '#4f46e5', strokeWidth: 2 },
+    animated: true,
   },
   {
     id: 'e7-8',
@@ -140,5 +160,7 @@ export const initialEdges: Edge[] = [
     markerEnd: {
       type: MarkerType.ArrowClosed,
     },
+    style: { stroke: '#4f46e5', strokeWidth: 2 },
+    animated: true,
   },
 ]; 

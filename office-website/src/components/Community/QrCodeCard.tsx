@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+import Counter from 'yet-another-react-lightbox/plugins/counter';
+import 'yet-another-react-lightbox/plugins/counter.css';
 
 const QrCodeItem = styled.div`
   display: flex;
@@ -23,6 +28,12 @@ const QrCodeImage = styled.img`
   height: auto;
   border-radius: 8px;
   margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
 
 const QrCodeText = styled.p`
@@ -50,6 +61,7 @@ interface QrCodeCardProps {
   text: string;
   linkUrl?: string;
   linkText?: string;
+  onClick?: () => void;
 }
 
 const QrCodeCard: React.FC<QrCodeCardProps> = ({ 
@@ -57,22 +69,60 @@ const QrCodeCard: React.FC<QrCodeCardProps> = ({
   imageAlt, 
   text,
   linkUrl,
-  linkText
+  linkText,
+  onClick
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleImageClick = () => {
+    if (onClick) {
+      onClick();
+    } else {
+      setIsOpen(true);
+    }
+  };
+
   return (
-    <QrCodeItem>
-      <QrCodeImage src={imageUrl} alt={imageAlt} />
-      <QrCodeText>
-        {linkUrl && linkText ? (
-          <>
-            <StyledLink href={linkUrl} target="_blank">{linkText}</StyledLink>
-            {" "}或{text}
-          </>
-        ) : (
-          text
-        )}
-      </QrCodeText>
-    </QrCodeItem>
+    <>
+      <QrCodeItem>
+        <QrCodeImage 
+          src={imageUrl} 
+          alt={imageAlt} 
+          onClick={handleImageClick}
+          title="点击查看大图"
+        />
+        <QrCodeText>
+          {linkUrl && linkText ? (
+            <>
+              <StyledLink href={linkUrl} target="_blank">{linkText}</StyledLink>
+              {" "}或{text}
+            </>
+          ) : (
+            text
+          )}
+        </QrCodeText>
+      </QrCodeItem>
+
+      {!onClick && (
+        <Lightbox
+          open={isOpen}
+          close={() => setIsOpen(false)}
+          slides={[{ src: imageUrl, alt: imageAlt }]}
+          plugins={[Zoom, Counter]}
+          zoom={{
+            maxZoomPixelRatio: 3,
+            zoomInMultiplier: 1.5,
+          }}
+          carousel={{
+            finite: true,
+          }}
+          render={{
+            buttonPrev: () => null,
+            buttonNext: () => null,
+          }}
+        />
+      )}
+    </>
   );
 };
 

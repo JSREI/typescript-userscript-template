@@ -17,10 +17,10 @@ const FooterTopSection: React.FC = () => {
     <FooterTop>
       <FooterColumn>
         <FooterLogo href="https://github.com/JSREI/typescript-userscript-template" target="_blank">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#3B82F6" />
-            <path d="M2 17L12 22L22 17" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M2 12L12 17L22 12" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* JSREI组织标志 */}
+            <rect width="100" height="100" rx="12" fill="#4f46e5"/>
+            <path d="M25 40H75M25 50H65M25 60H70" stroke="white" strokeWidth="8" strokeLinecap="round"/>
           </svg>
           <span>Typescript Userscript Template</span>
         </FooterLogo>
