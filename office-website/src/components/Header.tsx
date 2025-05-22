@@ -106,7 +106,6 @@ const GitHubButton = styled.a`
   }
   
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primaryHover};
     transform: translateY(-2px);
   }
 `;
