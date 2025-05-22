@@ -106,6 +106,7 @@ const GitHubButton = styled.a`
   }
   
   &:hover {
+    color: white;
     transform: translateY(-2px);
   }
 `;
