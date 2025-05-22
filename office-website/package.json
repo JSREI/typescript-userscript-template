@@ -32,6 +32,7 @@
     "react-syntax-highlighter": "^15.6.1",
     "reactflow": "^11.11.4",
     "styled-components": "^6.1.8",
+    "web-vitals": "^5.0.1",
     "yet-another-react-lightbox": "^3.23.2"
   },
   "devDependencies": {
