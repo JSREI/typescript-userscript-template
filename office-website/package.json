@@ -37,6 +37,7 @@
   "devDependencies": {
     "@types/node": "^22.13.1",
     "@types/prismjs": "^1.26.5",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@types/tampermonkey": "^5.0.4",
     "@types/webpack": "^5.28.5",
     "ts-loader": "^9.5.2",
