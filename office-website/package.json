@@ -1,40 +1,31 @@
 {
-  "homepage": "https://jsrei.github.io/typescript-userscript-template",
+  "name": "userscript-foo",
+  "version": "0.0.1",
+  "description": "this is userscript's description",
+  "main": "index.js",
+  "repository": "https://github.com/JSREI/userscript-template.git",
+  "namespace": "https://github.com/JSREI/userscript-template.git",
+  "document": "https://github.com/JSREI/userscript-template.git",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "webpack --config webpack.prod.js",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "dev": "webpack --watch --config webpack.dev.js",
+    "gen-dev-header": "node scripts/generate-dev-header.js"
+  },
+  "author": "CC11001100 <CC11001100@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "@types/tampermonkey": "^5.0.4",
+    "@types/webpack": "^5.28.5",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.9.0"
   },
   "dependencies": {
-    "@types/react": "^18.2.48",
-    "@types/react-dom": "^18.2.18",
-    "@types/react-syntax-highlighter": "^15.5.13",
-    "@types/styled-components": "^5.1.34",
-    "axios": "^1.9.0",
-    "prismjs": "^1.30.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
-    "react-syntax-highlighter": "^15.6.1",
-    "reactflow": "^11.11.4",
-    "styled-components": "^6.1.18",
-    "web-vitals": "^5.0.1",
-    "yet-another-react-lightbox": "^3.23.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/prismjs": "^1.26.5"
+    "@types/react-router-dom": "^5.3.3",
+    "react-router-dom": "^7.6.0"
   }
 }
