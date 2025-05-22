@@ -79,7 +79,7 @@ const GlobalStyles = createGlobalStyle`
     transition: ${({ theme }) => theme.transitions.fast};
     
     &:hover {
-      color: ${({ theme }) => theme.colors.primaryDark};
+      color: ${({ theme }) => theme.colors.primaryHover};
     }
   }
 

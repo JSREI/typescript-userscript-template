@@ -39,6 +39,11 @@ const Logo = styled.a`
   span {
     margin-left: 0.5rem;
   }
+  
+  &:hover {
+    color: ${({ theme }) => theme.colors.primaryHover};
+    text-decoration: none;
+  }
 `;
 
 const NavLinks = styled.nav`
