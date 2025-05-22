@@ -1,7 +1,8 @@
 import React from 'react';
 import { 
   FooterBottom,
-  Copyright
+  Copyright,
+  FooterLink
 } from '../../styles/components/Footer.styles';
 
 const FooterBottomSection: React.FC = () => {
@@ -9,7 +10,9 @@ const FooterBottomSection: React.FC = () => {
   
   return (
     <FooterBottom>
-      <Copyright>© {currentYear} Typescript Userscript Template. 保留所有权利。</Copyright>
+      <Copyright>
+        © {currentYear} <FooterLink href="https://github.com/JSREI/typescript-userscript-template" target="_blank">Typescript Userscript Template</FooterLink>. 保留所有权利。
+      </Copyright>
     </FooterBottom>
   );
 };

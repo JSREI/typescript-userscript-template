@@ -106,7 +106,7 @@ export const PrimaryButton = styled.a`
   transition: all 0.2s;
   
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primaryDark};
+    background-color: ${({ theme }) => theme.colors.primaryHover};
     transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.boxShadow.medium};
   }

@@ -172,7 +172,7 @@ const GlobalStyles = createGlobalStyle`
       box-shadow: ${({ theme }) => theme.boxShadow.button};
       
       &:hover, &:focus {
-        background-color: ${({ theme }) => theme.colors.primaryDark};
+        background-color: ${({ theme }) => theme.colors.primaryHover};
         transform: translateY(-2px);
       }
       

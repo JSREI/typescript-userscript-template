@@ -107,7 +107,7 @@ const PrimaryButton = styled.a`
   text-decoration: none;
   
   &:hover {
-    background: ${({ theme }) => theme.colors.primaryDark};
+    background: ${({ theme }) => theme.colors.primaryHover};
     transform: translateY(-1px);
     box-shadow: ${({ theme }) => theme.boxShadow.button};
   }

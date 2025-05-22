@@ -70,7 +70,7 @@ export const StyledLink = styled.a`
   transition: color 0.2s ease;
   
   &:hover {
-    color: ${({ theme }) => theme.colors.primaryDark};
+    color: ${({ theme }) => theme.colors.primaryHover};
     text-decoration: underline;
   }
 `; 
