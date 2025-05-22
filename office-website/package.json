@@ -6,14 +6,27 @@
   "repository": "https://github.com/JSREI/userscript-template.git",
   "namespace": "https://github.com/JSREI/userscript-template.git",
   "document": "https://github.com/JSREI/userscript-template.git",
+  "homepage": "https://jsrei.github.io/typescript-userscript-template",
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
-    "watch": "webpack --watch --config webpack.dev.js",
-    "dev": "webpack --watch --config webpack.dev.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "gen-dev-header": "node scripts/generate-dev-header.js"
   },
   "author": "CC11001100 <CC11001100@qq.com>",
   "license": "MIT",
+  "dependencies": {
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/styled-components": "^5.1.34",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.6.0",
+    "react-scripts": "^5.0.1",
+    "styled-components": "^6.1.8"
+  },
   "devDependencies": {
     "@types/node": "^22.13.1",
     "@types/tampermonkey": "^5.0.4",
@@ -24,8 +37,16 @@
     "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.9.0"
   },
-  "dependencies": {
-    "@types/react-router-dom": "^5.3.3",
-    "react-router-dom": "^7.6.0"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
