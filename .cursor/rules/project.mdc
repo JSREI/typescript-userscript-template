@@ -1,0 +1,9 @@
+---
+description: 项目架构
+globs: *
+alwaysApply: true
+---
+- 这是一个使用TypeScript开发的油猴插件
+- office-website下是官方网站
+- src目录下是项目的源代码 
+- 
