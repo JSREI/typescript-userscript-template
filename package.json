@@ -1,19 +1,53 @@
 {
-  "name": "userscript-foo",
-  "version": "0.0.1",
-  "description": "this is userscript's description",
-  "main": "index.js",
-  "repository": "https://github.com/JSREI/userscript-template.git",
-  "namespace": "https://github.com/JSREI/userscript-template.git",
-  "document": "https://github.com/JSREI/userscript-template.git",
+  "name": "typescript-userscript-template-jsrei",
+  "version": "1.0.0",
+  "description": "A TypeScript template for developing userscripts with modern tooling and modular development experience",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JSREI/typescript-userscript-template.git"
+  },
+  "homepage": "https://github.com/JSREI/typescript-userscript-template#readme",
+  "bugs": {
+    "url": "https://github.com/JSREI/typescript-userscript-template/issues"
+  },
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch --config webpack.dev.js",
     "dev": "webpack --watch --config webpack.dev.js",
-    "gen-dev-header": "node scripts/generate-dev-header.js"
+    "gen-dev-header": "node scripts/generate-dev-header.js",
+    "prepublishOnly": "npm run build",
+    "prepack": "npm run build",
+    "publish:npm": "node scripts/publish-npm.js",
+    "deploy:pages": "node scripts/deploy-pages.js",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major"
   },
+  "keywords": [
+    "userscript",
+    "typescript",
+    "template",
+    "tampermonkey",
+    "greasemonkey",
+    "webpack",
+    "modular-development"
+  ],
   "author": "CC11001100 <CC11001100@qq.com>",
   "license": "MIT",
+  "files": [
+    "dist/",
+    "src/",
+    "scripts/",
+    "webpack.*.js",
+    "tsconfig.json",
+    "userscript-headers.js",
+    "README.md",
+    "README_en.md"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "devDependencies": {
     "@types/node": "^22.13.1",
     "@types/tampermonkey": "^5.0.4",
