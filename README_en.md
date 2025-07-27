@@ -6,6 +6,8 @@
 
 A plan for using `Node.js` + `Webpack` for modular development of Tampermonkey scripts, aimed at improving the development experience of Tampermonkey, reducing the mental burden during development, and allowing Tampermonkey scripts to be developed like a regular modular front-end project. Otherwise, a `JavaScript` file with thousands of lines to be modified back and forth is really too much to handle...
 
+**📦 NPM Package**: [typescript-userscript-template-jsrei](https://www.npmjs.com/package/typescript-userscript-template-jsrei)
+
 # 2. Advantages
 
 - Modular development of Tampermonkey projects can greatly enhance both the development experience and efficiency. You no longer have to worry about how to organize code within a single `JavaScript` file (Tampermonkey scripts uploaded to the Tampermonkey store must be single files without obfuscation or compression, and the JS files produced by modular development and packaging also meet the requirements for uploading).
@@ -14,9 +16,43 @@ A plan for using `Node.js` + `Webpack` for modular development of Tampermonkey s
 
 # 3. Quick Start
 
+## Method 1: Using npm Package (Recommended)
+
+Use our published npm package to create a new project directly:
+
+```bash
+# Create new project directory
+mkdir my-userscript
+cd my-userscript
+
+# Initialize project with npm
+npm init -y
+
+# Install template package
+npm install typescript-userscript-template-jsrei
+
+# Copy template files to current directory
+cp -r node_modules/typescript-userscript-template-jsrei/* .
+cp -r node_modules/typescript-userscript-template-jsrei/.* . 2>/dev/null || true
+
+# Install dependencies
+npm install
+
+# Clean up unnecessary files
+rm -rf node_modules/typescript-userscript-template-jsrei
+```
+
+Or use npx for one-command creation (if supported):
+
+```bash
+npx typescript-userscript-template-jsrei create my-userscript
+```
+
+## Method 2: Using GitHub Template
+
 To quickly get started with the project template, follow these steps:
 
-1. Go to the repository at [https://github.com/JSREI/userscript-template](https://github.com/JSREI/userscript-template).
+1. Go to the repository at [https://github.com/JSREI/typescript-userscript-template](https://github.com/JSREI/typescript-userscript-template).
 2. Click on the "Use this template" button.
 3. Then, select "Create a new repository" to create a new repository from this template.
 

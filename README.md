@@ -6,6 +6,8 @@
 
 使用 `Node.js` + `Webpack` 模块化开发油猴脚本的方案，用于提升油猴开发体验，降低开发时的心智负担，让油猴脚本也能当做一个普通的模块化的前端项目来开发，要不然一个 `JavaScript` 文件几千行来回改本人真的有点顶不住......
 
+**📦 NPM 包**: [typescript-userscript-template-jsrei](https://www.npmjs.com/package/typescript-userscript-template-jsrei)
+
 ---
 
 ## 二、优势
@@ -20,7 +22,41 @@
 
 ## 三、快速开始
 
-在当前仓库（https://github.com/JSREI/userscript-template）选择 "`Use this template`" --> "`Create a new repository`"，从这个模板仓库创建一个新的仓库： 
+### 方式一：使用 npm 包（推荐）
+
+直接使用我们发布的 npm 包来创建新项目：
+
+```bash
+# 创建新项目目录
+mkdir my-userscript
+cd my-userscript
+
+# 使用 npm 初始化项目
+npm init -y
+
+# 安装模板包
+npm install typescript-userscript-template-jsrei
+
+# 复制模板文件到当前目录
+cp -r node_modules/typescript-userscript-template-jsrei/* .
+cp -r node_modules/typescript-userscript-template-jsrei/.* . 2>/dev/null || true
+
+# 安装依赖
+npm install
+
+# 清理不需要的文件
+rm -rf node_modules/typescript-userscript-template-jsrei
+```
+
+或者使用 npx 一键创建（如果支持）：
+
+```bash
+npx typescript-userscript-template-jsrei create my-userscript
+```
+
+### 方式二：使用 GitHub 模板
+
+在当前仓库（https://github.com/JSREI/typescript-userscript-template）选择 "`Use this template`" --> "`Create a new repository`"，从这个模板仓库创建一个新的仓库：
 
 ![创建新仓库](README.assets/image-20230816233501101.png)
 
