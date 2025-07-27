@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/typescript-userscript-template/static/css/main.685ac775.css",
+    "main.js": "/typescript-userscript-template/static/js/main.b2de42f9.js",
+    "index.html": "/typescript-userscript-template/index.html",
+    "main.685ac775.css.map": "/typescript-userscript-template/static/css/main.685ac775.css.map",
+    "main.b2de42f9.js.map": "/typescript-userscript-template/static/js/main.b2de42f9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.685ac775.css",
+    "static/js/main.b2de42f9.js"
+  ]
+}
